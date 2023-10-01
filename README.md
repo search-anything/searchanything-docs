@@ -1,6 +1,6 @@
 # Search Anything Docs
 
-Read the [quick start guide]()
+Read the [quick start guide](https://search-anything.github.io)
 
 ## Contributing
 
