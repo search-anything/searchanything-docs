@@ -1,7 +1,8 @@
 ---
 title: Getting Started
 description: Quickly get setup using Search Anything
-
+sidebar:
+  order: 1
 ---
 
 Using SearchAnything is very easy. We will create an access token, and import some sample [recipe data](https://recipenlg.cs.put.poznan.pl/). These same process can be used for indexing your own content.

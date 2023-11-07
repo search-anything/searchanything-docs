@@ -13,7 +13,7 @@ export default defineConfig({
 			},
 			sidebar: [
 				{
-					label: 'Setup',
+					label: 'Guides',
 					autogenerate: {directory: 'guides'}
 				},
 				{
