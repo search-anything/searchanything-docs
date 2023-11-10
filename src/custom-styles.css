@@ -1,0 +1,21 @@
+.site-title > span {
+    font-weight: 700;
+    color: var(--sl-color-text-accent);
+    font-size: 20px;
+    line-height: 28px;
+}
+.action.primary {
+    border-radius: 8px;
+    font-weight: 700;
+}
+:root {
+    --sl-color-text-accent: #fff;
+}
+:root[data-theme='light'], [data-theme='light'] {
+    --sl-color-text-accent: #000;
+}
+@media (min-width: 50em) {
+    :root {
+        --sl-nav-height: 4rem;
+    }
+}

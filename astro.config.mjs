@@ -7,10 +7,12 @@ export default defineConfig({
 	base: "/searchanything-docs",
 	integrations: [
 		starlight({
-			title: 'Search Anything Docs',
-			social: {
-				github: 'https://github.com/search-anything/searchanything-docs',
+			favicon: './favicon.ico',
+			logo: {
+				src: './src/assets/logo.png',
 			},
+			title: 'Search Anything',
+			customCss: ['./src/custom-styles.css'],
 			sidebar: [
 				{
 					label: 'Guides',
@@ -20,6 +22,8 @@ export default defineConfig({
 					label: 'Reference',
 					autogenerate: { directory: 'api' },
 				},
+				{ label: 'Sign up', badge: '>', link: 'https://searchanything-landing.vercel.app/' },
+				{ label: 'Your dashboard', badge: '>', link: 'https://searchanything.vercel.app/' },
 			],
 		}),
 	],

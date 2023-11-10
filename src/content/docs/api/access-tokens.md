@@ -3,7 +3,7 @@ title: Access Tokens
 description: The different types of access tokens
 ---
 
-SearchAnything currently has two types of access tokens for API access. Each access token is made up of two
+SearchAnything has two types of access tokens for API access. Each access token is made up of two
 parts. The access key itself used for part of authenticated access and an ID part used for identifying unique
 access tokens in use.
 

@@ -5,13 +5,13 @@ sidebar:
   order: 1
 ---
 
-Using SearchAnything is very easy. We will create an access token, and import some sample [recipe data](https://recipenlg.cs.put.poznan.pl/). These same process can be used for indexing your own content.
+Using SearchAnything is very easy. In this guide you will get a sample rapid document search set up through creating an access token, and importing some sample [recipe data](https://recipenlg.cs.put.poznan.pl/). The same process can be used for indexing your own content.
 
 ## Access Token
 
-You're first going to need an `admin` access token for this guide. Go to [dashboard](https://searchanything.vercel.app/dashboard) page and click on *Create token* button and select *Create admin token*.
+First step will be creating an `admin` access token. If you haven't already, sign up and create a **free** account, next go to the [dashboard](https://searchanything.vercel.app/dashboard) page and click on *Create token* button and select *Create admin token*.
 
-Save you're access token to an environment variable for later use.
+Save your access token to an environment variable for later use:
 
 ```shell
 // bash
@@ -25,7 +25,7 @@ $Env:SA_ADMIN_TOKEN="sal_aaaaaaaaaaaaaaaaaaaaa.aaaaaaaaaaaaaaaaaaaa"
 
 ## Import recipes
 
-We're going to import our recipes next for indexing, you can download a sample dataset of 5k recipes [here](https://gist.github.com/JayJamieson/2fe81f98e63d6166c47e34caa46a5786) used in this quickstart. Alternatively use you're own data formatted using [JSON Lines](https://jsonlines.org/) text format.
+Next will be importing the recipes for indexing, you can download a sample dataset of 5k recipes [here](https://gist.github.com/JayJamieson/2fe81f98e63d6166c47e34caa46a5786). Alternatively use your own data formatted using the [JSON Lines](https://jsonlines.org/) text format.
 
 First lets look at a sample of the recipes data.
 
@@ -33,9 +33,11 @@ First lets look at a sample of the recipes data.
 {"title":"No-Bake Nut Cookies","ingredients":["1 c. firmly packed brown sugar","1/2 c. evaporated milk","1/2 tsp. vanilla","1/2 c. broken nuts (pecans)","2 Tbsp. butter or margarine","3 1/2 c. bite size shredded rice biscuits"],"directions":["In a heavy 2-quart saucepan, mix brown sugar, nuts, evaporated milk and butter or margarine.","Stir over medium heat until mixture bubbles all over top.","Boil and stir 5 minutes more. Take off heat.","Stir in vanilla and cereal; mix well.","Using 2 teaspoons, drop and shape into 30 clusters on wax paper.","Let stand until firm, about 30 minutes."],"link":"www.cookbooks.com/Recipe-Details.aspx?id=44874","keywords":["brown sugar","milk","vanilla","nuts","butter","bite size shredded rice biscuits"]}
 ```
 
-It has the following couple of useful keys that we could index on. Most of the time you would search for a recipe by *title* so lets index on that. To do this we specify a `content` query parameter with the *title* key as the value.
+## Indexing
 
-We can use the following `cURL` command to do this for us. This should take roughly 3-10 seconds depending on your internet connection.
+Indexing is very important when it comes to searching through large datasets. In the sample recipe data our chefs would most of the time be searching by the *"title"* property of a recipe, which means it would make sense to index this. To do this you specify a `content` query parameter with the *"title"* key as the value.
+
+We can use the following `cURL` command to do this for us.
 
 ```shell
 curl --request POST \
@@ -47,9 +49,9 @@ curl --request POST \
 
 ## Searching
 
-Awesome, you have 5k recipes indexed in a single `cURL` command. Now lets search our recipe collection for something tasty.
+Awesome, you now have 5k recipes indexed in a single `cURL` command. Now let's search the recipe collection for something tasty.
 
-We can do this using the following command. Take note that our search time is a `q` query parameter just like Google. Lets search for *Chicken salad* recipes and see whats available.
+We can do this using the following command. Take note that the search term is a `q` query parameter just like Google. Let's search for *Chicken salad* recipes and see what is available.
 
 ```shell
 curl --request GET \
@@ -57,8 +59,7 @@ curl --request GET \
   --header "Authorization: $SA_ADMIN_TOKEN"
 ```
 
-You should get a similar response as seen below.
-
+If using the sample data set, you will see the following yummy recipe in record time:
 ```json
 {
  "Count": 46,
@@ -75,11 +76,11 @@ You should get a similar response as seen below.
  "QueryTimeMs": 15
 ```
 
-## Cleanup
+## Clean-up
 
-If you used the sample recipe data and wondering how to cleanup, a quick and simple way is to re-`init` your index.
+If you used the sample recipe data and wondering how to clean-up, a quick and simple way is to re-`init` your index.
 
-This command will force initialize an empty index, any data indexed will be deleted and cannot be retrieved.
+This command will force initialize an empty index, any data indexed will be **deleted and cannot be retrieved**.
 
 ```shell
 curl --request POST \
